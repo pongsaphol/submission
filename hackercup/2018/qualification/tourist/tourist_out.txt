@@ -1,0 +1,80 @@
+Case #1: BridgeClub ZucksOldOffice FreshOrangeJuice BurgerShack Microkitchen ColdBrewMachine NailPolishRoomBlock 
+Case #2: ColdBrewMachine 
+Case #3: TechVendingMachine 
+Case #4: ZucksOffice HackerSquare Helpdesk SugarShack 
+Case #5: LikeSign Arcade SwagStore 
+Case #6: HotfixBar 
+Case #7: OculusDemoLab VerveCoffee ZucksOffice BahnAppetit HalalTruck MPK20Roof FakeCrosswalk 
+Case #8: RainbowStairs WallOfPhones FoxGazebo Helpdesk Arcade Harvest NailPolishRoomBlock FullCircle PopUpShop OculusDemoLab SaintFrank MamaPennys Sol FoxPainting HalalTruck LateHarvest FakeCrosswalk SugarShack BlueBottle SweetStop TuringInDominoes CafeEpic LivingTheDream DentalOffice ZucksOffice SonOfPingAndPong Nanokitchen ColdBrewMachine MPK20Roof WoodenSculpture PhilzCoffee BahnAppetit SwagStore FreshOrangeJuice ConstitutionDeli ShuttlePlatform LightningBolts ZucksOldOffice LikeSign TechVendingMachine Ballpit 
+Case #9: PhilzCoffee TransportationHub ShuttlePlatform FreshOrangeJuice FakeCrosswalk Sol OculusDemoLab Harvest BlueBottle LikeSign LateHarvest ZucksOffice WoodenSculpture FukiSushiInOldenDays TechVendingMachine VerveCoffee ChosHawkerCenter ColdBrewMachine Helpdesk FoxPainting PopUpShop BahnAppetit ConstitutionDeli TuringInDominoes SugarShack HalalTruck ZucksOldOffice LightningBolts RainbowStairs FoxGazebo Nanokitchen HackerSquare LivingTheDream Microkitchen MamaPennys BurgerShack DentalOffice BridgeClub 
+Case #10: Helpdesk NailPolishRoomBlock HalalTruck ChosHawkerCenter BurgerShack LateHarvest SweetStop FukiSushiInOldenDays Nanokitchen SonOfPingAndPong MamaPennys Sol FullCircle PopUpShop VerveCoffee MPK20Roof ShuttlePlatform HackerSquare RainbowStairs SugarShack ColdBrewMachine LivingTheDream WallOfPhones ZucksOldOffice Ballpit 
+Case #11: PhilzCoffee HalalTruck Microkitchen MPK20Roof ColdBrewMachine 
+Case #12: Microkitchen VerveCoffee HackerSquare PopUpShop 
+Case #13: Sol FoxGazebo HotfixBar PhilzCoffee NailPolishRoomBlock SaintFrank WoodenSculpture CafeEpic WallOfPhones HackerSquare BurgerShack DentalOffice ZucksOldOffice Nanokitchen ShuttlePlatform 
+Case #14: FoxGazebo MPK20Roof WoodenSculpture Biryani 
+Case #15: ConstitutionDeli TuringInDominoes Harvest HackerSquare NailPolishRoomBlock Ballpit BlueBottle OculusDemoLab Nanokitchen TechVendingMachine BahnAppetit VerveCoffee HalalTruck LivingTheDream SugarShack FoxPainting LateHarvest SonOfPingAndPong DentalOffice HotfixBar BridgeClub LikeSign MamaPennys SwagStore RainbowStairs BurgerShack 
+Case #16: LightningBolts VerveCoffee 
+Case #17: WoodenSculpture Harvest FukiSushiInOldenDays PopUpShop ShuttlePlatform BahnAppetit NailPolishRoomBlock SwagStore SugarShack 
+Case #18: WoodenSculpture 
+Case #19: LateHarvest HalalTruck LightningBolts MamaPennys Harvest Helpdesk DentalOffice ColdBrewMachine TransportationHub SonOfPingAndPong RainbowStairs LikeSign FakeCrosswalk Ballpit FukiSushiInOldenDays FullCircle SugarShack CafeEpic FreshOrangeJuice ShuttlePlatform Nanokitchen TuringInDominoes NailPolishRoomBlock MPK20Roof BurgerShack SaintFrank HackerSquare 
+Case #20: SaintFrank SonOfPingAndPong WallOfPhones SweetStop VerveCoffee WoodenSculpture Nanokitchen 
+Case #21: CafeEpic SonOfPingAndPong FoxPainting BlueBottle Arcade SwagStore Sol BurgerShack FoxGazebo HotfixBar HalalTruck BridgeClub OculusDemoLab MPK20Roof Nanokitchen SugarShack ZucksOldOffice HackerSquare SaintFrank FakeCrosswalk Helpdesk ZucksOffice FukiSushiInOldenDays NailPolishRoomBlock LivingTheDream DentalOffice Harvest BahnAppetit WoodenSculpture PopUpShop LightningBolts MamaPennys FullCircle ConstitutionDeli Microkitchen PhilzCoffee WallOfPhones RainbowStairs VerveCoffee FreshOrangeJuice TransportationHub SweetStop TuringInDominoes 
+Case #22: SaintFrank BlueBottle TransportationHub DentalOffice ColdBrewMachine MamaPennys 
+Case #23: TuringInDominoes SonOfPingAndPong 
+Case #24: ShuttlePlatform NailPolishRoomBlock TechVendingMachine PopUpShop FukiSushiInOldenDays ChosHawkerCenter Arcade BridgeClub LightningBolts HotfixBar MPK20Roof 
+Case #25: SaintFrank Helpdesk ConstitutionDeli SweetStop Microkitchen LateHarvest MamaPennys PhilzCoffee Sol BlueBottle SonOfPingAndPong FullCircle 
+Case #26: CafeEpic 
+Case #27: ZucksOldOffice ChosHawkerCenter Harvest SonOfPingAndPong Nanokitchen TuringInDominoes HotfixBar MPK20Roof FoxGazebo Arcade HackerSquare Ballpit FukiSushiInOldenDays SugarShack CafeEpic Helpdesk ColdBrewMachine 
+Case #28: BlueBottle NailPolishRoomBlock HackerSquare WallOfPhones LateHarvest BridgeClub Harvest Microkitchen WoodenSculpture ConstitutionDeli LightningBolts DentalOffice FullCircle SugarShack LivingTheDream PopUpShop RainbowStairs ChosHawkerCenter HotfixBar PhilzCoffee ColdBrewMachine ShuttlePlatform MPK20Roof Arcade CafeEpic SweetStop VerveCoffee SwagStore ZucksOffice FukiSushiInOldenDays TransportationHub HalalTruck Sol TechVendingMachine 
+Case #29: ShuttlePlatform 
+Case #30: ChosHawkerCenter BlueBottle FukiSushiInOldenDays ZucksOldOffice LateHarvest WallOfPhones VerveCoffee ConstitutionDeli PopUpShop TechVendingMachine ZucksOffice ShuttlePlatform RainbowStairs FoxPainting MPK20Roof SwagStore Microkitchen BridgeClub ColdBrewMachine WoodenSculpture OculusDemoLab Harvest HackerSquare Sol SugarShack BurgerShack FreshOrangeJuice 
+Case #31: LivingTheDream Harvest PhilzCoffee MamaPennys 
+Case #32: HalalTruck FreshOrangeJuice 
+Case #33: PhilzCoffee HalalTruck Ballpit LivingTheDream SweetStop BridgeClub Nanokitchen SwagStore WallOfPhones SonOfPingAndPong Arcade ZucksOffice FakeCrosswalk 
+Case #34: VerveCoffee FullCircle LikeSign 
+Case #35: DentalOffice Microkitchen TechVendingMachine Harvest PopUpShop SonOfPingAndPong ConstitutionDeli Helpdesk TuringInDominoes FoxPainting ZucksOldOffice SweetStop MamaPennys LikeSign TransportationHub BlueBottle LivingTheDream CafeEpic WoodenSculpture FukiSushiInOldenDays FoxGazebo SwagStore Sol SaintFrank RainbowStairs BurgerShack ShuttlePlatform BahnAppetit Nanokitchen LightningBolts PhilzCoffee Ballpit HotfixBar ColdBrewMachine FakeCrosswalk VerveCoffee FreshOrangeJuice OculusDemoLab FullCircle MPK20Roof LateHarvest SugarShack WallOfPhones ChosHawkerCenter NailPolishRoomBlock 
+Case #36: SaintFrank OculusDemoLab LikeSign DentalOffice FakeCrosswalk 
+Case #37: WallOfPhones 
+Case #38: PhilzCoffee CafeEpic FukiSushiInOldenDays Microkitchen RainbowStairs LivingTheDream WoodenSculpture FoxGazebo FoxPainting OculusDemoLab Sol SaintFrank FullCircle SweetStop ChosHawkerCenter ColdBrewMachine BahnAppetit Ballpit VerveCoffee TechVendingMachine PopUpShop TransportationHub ConstitutionDeli WallOfPhones FakeCrosswalk ZucksOldOffice MamaPennys NailPolishRoomBlock Helpdesk LikeSign HotfixBar LateHarvest Harvest Nanokitchen BridgeClub ZucksOffice BurgerShack DentalOffice Arcade ShuttlePlatform FreshOrangeJuice BlueBottle 
+Case #39: MPK20Roof MamaPennys SugarShack FoxPainting RainbowStairs ColdBrewMachine FukiSushiInOldenDays PhilzCoffee Ballpit ZucksOldOffice TechVendingMachine 
+Case #40: SwagStore CafeEpic FullCircle WoodenSculpture Microkitchen VerveCoffee ZucksOffice PhilzCoffee SweetStop ColdBrewMachine SonOfPingAndPong HotfixBar SaintFrank BahnAppetit DentalOffice Ballpit Helpdesk ZucksOldOffice PopUpShop FoxPainting Nanokitchen LikeSign BridgeClub SugarShack 
+Case #41: SaintFrank HotfixBar Ballpit MPK20Roof PopUpShop ChosHawkerCenter HalalTruck FoxPainting Sol LivingTheDream SweetStop WallOfPhones HackerSquare LateHarvest TuringInDominoes LightningBolts ColdBrewMachine BurgerShack Nanokitchen 
+Case #42: ZucksOffice ChosHawkerCenter LivingTheDream FullCircle SaintFrank RainbowStairs MamaPennys ConstitutionDeli SugarShack TuringInDominoes MPK20Roof BridgeClub LightningBolts WallOfPhones FreshOrangeJuice SweetStop Nanokitchen Ballpit Sol LikeSign TransportationHub SonOfPingAndPong OculusDemoLab 
+Case #43: ShuttlePlatform TechVendingMachine CafeEpic ConstitutionDeli MPK20Roof BlueBottle TuringInDominoes FukiSushiInOldenDays Nanokitchen LightningBolts FreshOrangeJuice 
+Case #44: Helpdesk ChosHawkerCenter SugarShack BlueBottle LivingTheDream 
+Case #45: SweetStop 
+Case #46: Nanokitchen ConstitutionDeli SaintFrank DentalOffice Ballpit FullCircle BlueBottle FakeCrosswalk OculusDemoLab FoxPainting Harvest ZucksOldOffice BurgerShack FreshOrangeJuice TransportationHub Microkitchen ShuttlePlatform FukiSushiInOldenDays LikeSign LateHarvest BridgeClub 
+Case #47: WallOfPhones Ballpit ZucksOldOffice 
+Case #48: WoodenSculpture SwagStore HotfixBar HalalTruck MPK20Roof MamaPennys SugarShack ConstitutionDeli 
+Case #49: ZucksOffice Sol HalalTruck Nanokitchen ConstitutionDeli TechVendingMachine ShuttlePlatform ColdBrewMachine BurgerShack Microkitchen Ballpit DentalOffice OculusDemoLab 
+Case #50: PopUpShop 
+Case #51: ConstitutionDeli LikeSign FoxGazebo BlueBottle BurgerShack Microkitchen TransportationHub TuringInDominoes SugarShack ZucksOldOffice HotfixBar LateHarvest LightningBolts NailPolishRoomBlock LivingTheDream FullCircle ZucksOffice CafeEpic SaintFrank SonOfPingAndPong OculusDemoLab Nanokitchen 
+Case #52: LivingTheDream ZucksOldOffice LightningBolts FukiSushiInOldenDays FreshOrangeJuice ZucksOffice FullCircle TechVendingMachine TransportationHub WallOfPhones MamaPennys 
+Case #53: CafeEpic SonOfPingAndPong SweetStop 
+Case #54: Nanokitchen DentalOffice SwagStore BlueBottle FoxGazebo SonOfPingAndPong VerveCoffee ChosHawkerCenter NailPolishRoomBlock Microkitchen 
+Case #55: CafeEpic Sol TransportationHub TuringInDominoes 
+Case #56: LivingTheDream 
+Case #57: SweetStop Harvest ZucksOffice OculusDemoLab HalalTruck Arcade BridgeClub MamaPennys SwagStore PhilzCoffee Sol CafeEpic LivingTheDream Microkitchen SugarShack NailPolishRoomBlock RainbowStairs BahnAppetit BlueBottle TransportationHub FullCircle ColdBrewMachine PopUpShop SaintFrank ChosHawkerCenter ZucksOldOffice Nanokitchen LateHarvest ConstitutionDeli FoxGazebo 
+Case #58: Harvest TechVendingMachine 
+Case #59: Ballpit Harvest TransportationHub 
+Case #60: Microkitchen BurgerShack FukiSushiInOldenDays Nanokitchen HackerSquare Helpdesk 
+Case #61: WallOfPhones HalalTruck SugarShack BurgerShack 
+Case #62: ColdBrewMachine ConstitutionDeli Harvest MamaPennys 
+Case #63: LikeSign Arcade SweetStop 
+Case #64: ZucksOffice SweetStop 
+Case #65: FullCircle 
+Case #66: ZucksOldOffice FullCircle TransportationHub Helpdesk LivingTheDream 
+Case #67: MamaPennys FukiSushiInOldenDays FoxPainting 
+Case #68: SwagStore CafeEpic FreshOrangeJuice FullCircle WallOfPhones TuringInDominoes HalalTruck 
+Case #69: OculusDemoLab Ballpit ZucksOffice VerveCoffee SugarShack SaintFrank FoxGazebo RainbowStairs Nanokitchen TransportationHub LightningBolts BlueBottle BurgerShack WallOfPhones ConstitutionDeli MPK20Roof ChosHawkerCenter HalalTruck WoodenSculpture MamaPennys PopUpShop CafeEpic LivingTheDream LateHarvest FukiSushiInOldenDays FoxPainting 
+Case #70: TransportationHub SaintFrank 
+Case #71: WoodenSculpture WallOfPhones OculusDemoLab HalalTruck FreshOrangeJuice LivingTheDream MamaPennys Arcade 
+Case #72: Arcade ConstitutionDeli HotfixBar 
+Case #73: DentalOffice BlueBottle 
+Case #74: PopUpShop FoxPainting LateHarvest TuringInDominoes BurgerShack LivingTheDream ChosHawkerCenter SugarShack BahnAppetit ColdBrewMachine Ballpit 
+Case #75: ConstitutionDeli VerveCoffee WoodenSculpture MPK20Roof LikeSign ZucksOffice Sol ZucksOldOffice MamaPennys 
+Case #76: Sol Helpdesk PhilzCoffee OculusDemoLab VerveCoffee LateHarvest Ballpit SweetStop DentalOffice NailPolishRoomBlock SwagStore BurgerShack SonOfPingAndPong MamaPennys ColdBrewMachine ConstitutionDeli FullCircle Nanokitchen ShuttlePlatform CafeEpic Microkitchen TuringInDominoes MPK20Roof SaintFrank Harvest LikeSign ZucksOffice ChosHawkerCenter WoodenSculpture SugarShack WallOfPhones HotfixBar FoxPainting 
+Case #77: ZucksOldOffice ZucksOffice BlueBottle TransportationHub 
+Case #78: RainbowStairs LateHarvest CafeEpic LightningBolts SugarShack BridgeClub ShuttlePlatform ChosHawkerCenter TransportationHub SonOfPingAndPong 
+Case #79: ChosHawkerCenter Arcade FoxGazebo FukiSushiInOldenDays WallOfPhones HackerSquare VerveCoffee BurgerShack HotfixBar FreshOrangeJuice WoodenSculpture 
+Case #80: LikeSign SweetStop SwagStore 
