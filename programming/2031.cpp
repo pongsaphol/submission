@@ -33,14 +33,5 @@ int main() {
             if(mxp < sz) mxp = sz, idx = i, mxv = ret;
         }
     }
-    Q = priority_queue<pii>();
-    sum = 0;
-    set<int> S;
-    for(int i = 0; i <= idx; ++i) {
-        sum += V[i].y.y, S.emplace(V[i].x);
-        Q.emplace(V[i].y.y, V[i].x);
-        while(!Q.empty() && sum * V[i].y.x > w * V[i].y.y) sum -= Q.top().x, S.erase(Q.top().y), Q.pop();
-    }
-    printf("%d\n", S.size());
-    for(auto x : S) printf("%d\n", x);
+    printf("%d\n", mxp);
 }
