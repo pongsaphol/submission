@@ -16,14 +16,12 @@ void find_component(int u, int p) {
 	static stack<int> S;
 	pre[u] = low[u] = ++idx;
 	mark[u] = true;
-	int cnt = 0;
 	S.emplace(u);
 	for(auto v : g[u]) if(!mark[v]) {
-		++cnt;
 		find_component(v, u);
 		low[u] = min(low[u], low[v]);
-		if(p && low[v] >= pre[u]) art[u] = true;
 		if(low[v] >= pre[u]) {
+			art[u] = true;
 			ccs.emplace_back(vi());
 			ccs.back().emplace_back(u);
 			while(ccs.back().back() != v) ccs.back().emplace_back(S.top()), S.pop();
@@ -92,3 +90,4 @@ int main() {
 		printf("%d\n", ret);
 	}
 }
+

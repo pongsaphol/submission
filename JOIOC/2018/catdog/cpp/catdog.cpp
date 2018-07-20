@@ -53,9 +53,8 @@ int dfs(int u, int p) {
 
 void hld() {
   dfs(1, 0);
-  for(int i = 1, id = 0; i <= n; ++i) if(spi[par[i]] != i) {
+  for(int i = 1, id = 0; i <= n; ++i) if(spi[par[i]] != i) 
     for(int j = i; j != -1; j = spi[j]) pos[j] = ++id, rot[j] = i, last[i] = j;
-  }
   build();
 }
 
@@ -71,10 +70,6 @@ void updt(int x, pii v, int p = 1, int l = 1, int r = n) {
 }
 
 item query(int x, int y, int p = 1, int l = 1, int r = n) {
-  if(x > r || l > y) {
-    item now; now.d[0] = now.d[1] = now.d[2] = now.d[3] = 0;
-    return now;
-  }
   if(x <= l && r <= y) return t[p];
   int m = l + r >> 1;
   if(y <= m) return query(x, y, p<<1, l, m);
