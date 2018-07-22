@@ -1,64 +1,70 @@
 #include <bits/stdc++.h>
+#define pii pair<int, int>
+#define x first
+#define y second
 using namespace std;
 
-const int MAXN = 1 << 19;
-int n, m, ptr, pos[MAXN], d[MAXN];
-bool t[MAXN<<1], lz[MAXN<<1];
-vector<int> g[MAXN];
+const int N = 1<<19;
+
+int n, m;
+vector<int> g[N];
+int par[N], rot[N], spi[N], pos[N], dep[N], in[N], out[N], rps[N];
 
 int dfs(int u, int p) {
-	for(auto v : g[u]) if(v != p) d[u] += dfs(v, u);
-	pos[u] = ++ptr;
-	return ++d[u];
+	static int idx = 0;
+	par[u] = p, dep[u] = dep[p] + 1, in[u] = ++idx;
+	pii ret(0, -1); int sz = 1;
+	for(int v : g[u]) if(v != p) {
+		int now = dfs(v, u);
+		sz += now;
+		if(ret.x < now) ret = pii(now, v);
+	}	
+	spi[u] = ret.y, out[u] = idx;
+	return sz;
 }
 
-template<typename T>
-void travel(int x, int y, const T &f, int p = 1, int l = 1, int r = n) {
-	if(lz[p]) {
-		t[p] = true;
-		if(l != r) lz[p << 1] = lz[p << 1 | 1] = true;
-		lz[p] = false;
-	}
-	if(x <= l && r <= y) return f(p, l, r);
+void hld() {
+	dfs(1, 0);
+	for(int i = 1, idx = 0; i <= n; ++i) if(spi[par[i]] != i) 
+		for(int j = i; ~j; j = spi[j]) pos[j] = ++idx, rot[j] = i; 
+}
+
+int t1[N<<1], t2[N<<1], lz1[N<<1], lz2[N<<1];
+
+void pushlazy(int p, int l, int r, int t[], int lz[]) {
+	if(!lz[p]) return;
+	t[p] = lz[p];
+	if(l != r) lz[p<<1] = lz[p<<1|1] = lz[p];
+	lz[p] = 0;
+}
+
+template<typename T> 
+void travel(int x, int y, const T &f, int t[], int lz[], int p = 1, int l = 1, int r = n) {
+	pushlazy(p, l, r, t, lz);
 	if(x > r || l > y) return;
+	if(x <= l && r <= y) return f(p, l, r);
 	int m = (l + r) >> 1;
-	travel(x, y, f, p << 1, l, m), travel(x, y, f, p << 1 | 1, m + 1, r);
-	t[p] = t[p << 1] & t[p << 1 | 1];
-} 
-
-void update(int x, bool v) {
-	int l = pos[x] - d[x] + 1, r = pos[x];
-	if(v) travel(r, r, [&](int p, int l, int r) { t[p] = false; });
-	else travel(l, r, [&](int p, int l, int r) { 
-		t[p] = true;
-		if(l != r) lz[p << 1] = lz[p << 1 | 1] = true;
-	});
-} 
-
-bool query(int x) {
-	int l = pos[x] - d[x] + 1, r = pos[x];
-	bool st = true;
-	travel(l, r, [&](int p, int l, int r) { st &= t[p]; });
-	return st;
+	travel(x, y, f, t, lz, p<<1, l, m), travel(x, y, f, t, lz, p<<1|1, m+1, r);
 }
 
 int main() {
-	// freopen("r", "r", stdin);
 	scanf("%d", &n);
-	for(int i = 1; i < n; ++i) {
-		int a, b;
-		scanf("%d %d", &a, &b);
-		g[a].emplace_back(b);
-		g[b].emplace_back(a);
+	for(int i = 1, u, v; i < n; ++i) {
+		scanf("%d %d", &u, &v);
+		g[u].emplace_back(v), g[v].emplace_back(u);
 	}
-	dfs(1, 0);
+	hld();
 	scanf("%d", &m);
-	while(m--) {
-		int a, b;
+	for(int i = 1, a, b; i <= m; ++i) {
 		scanf("%d %d", &a, &b);
-		if(a == 1) update(b, 0);
-		if(a == 2) update(b, 1);
-		if(a == 3) printf("%d\n", query(b));
+		if(a == 1) travel(in[b], out[b], [&](int p, int l, int r) {lz1[p] = i, pushlazy(p, l, r, t1, lz1);}, t1, lz1);
+		if(a == 2) while(b) travel(pos[rot[b]], pos[b], [&](int p, int l, int r) {lz2[p] = i, pushlazy(p, l, r, t2, lz2);}, t2, lz2), b = par[rot[b]];
+		if(a == 3) {
+			int x, y;
+			travel(in[b], in[b], [&](int p, int l, int r) { x = t1[p]; }, t1, lz1);
+			travel(pos[b], pos[b], [&](int p, int l, int r) { y = t2[p]; }, t2, lz2);
+			if(x == y) puts("0");
+			else puts(x > y ? "1" : "0");
+		}
 	}
-	return 0;
 }
