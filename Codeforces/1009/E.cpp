@@ -8,10 +8,12 @@ long M = 998244353;
 long A[N], dp[N];
 
 int main() {
-    int n; scanf("%d", &n);
+    ios_base::sync_with_stdio(false);
+    cin.tie(NULL);
+    int n; cin >> n;
     long a = 0, b = 0;
     for(int i = 1; i <= n; ++i) {
-        scanf("%lld", &A[i]);
+        cin >> A[i];
         a <<= 1;
         a %= M;
         a += A[i];
