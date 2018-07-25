@@ -26,11 +26,11 @@ int main() {
         if(z & 1) {
             long mm = (z + 1) >> 1;
             bool st = true;
-            printf("examine %lld %lld\n", z + mm, y);
+            printf("examine %lld %lld\n", x1 + z + mm, y);
             fflush(stdout);
             scanf("%s", inp);
             if(!strcmp(inp, "true")) st = false; 
-            printf("examine %lld %lld\n", z + z + z + mm, y);
+            printf("examine %lld %lld\n", x1 + z + z + z + mm, y);
             fflush(stdout);
             scanf("%s", inp);
             if(!strcmp(inp, "true")) st = false;
@@ -38,16 +38,18 @@ int main() {
         }
     } 
     if(!m && div % 3 == 0) {
+
         long z = div / 3;
         if(z & 1) {
             long mm = (z + 1) >> 1;
-            printf("examine %lld %lld\n", z + mm, y);
+            printf("examine %lld %lld\n", x1 + z + mm, y);
             fflush(stdout);
             scanf("%s", inp);
             if(!strcmp(inp, "false")) m = z;
         }
     }
     if(!m) m = div;
+
     while(1) {
         if(x - m <= 0 || y - m <= 0) break;
         printf("examine %lld %lld\n", x - m, y - m);
@@ -85,5 +87,6 @@ int main() {
         if(!strcmp(inp, "true")) y -= (1<<i);
     }
     long z = m >> 1;
+    
     printf("solution %lld %lld\n", x + m + m + z, y + m + m + z);
 }
