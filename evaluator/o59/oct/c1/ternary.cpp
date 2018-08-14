@@ -31,13 +31,11 @@ long solve(int x = 0, int y = 0, int l = n) {
 	int rur = l - sz - 1;
 	now = 0;
 	for(int i = 0; i <= rur; ++i) {
-		long cache = solve(x + sz + 1, y + sz + 1, i)*
-		solve(x + sz + 1 + i, y + sz + 1 + i, rur - i);
-		cache %= MOD;
-		cache *=  solve(x + 1, y, sz);
-		now += cache;
+		now += solve(x+sz+1, y+sz+1, i)*
+		solve(x+sz+i+1, y+sz+i+1, rur-i);
 		now %= MOD;
 	}
+	now = (now * solve(x+1, y, sz)) % MOD;
 	return now;
 }
 
