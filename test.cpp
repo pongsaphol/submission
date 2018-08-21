@@ -1,13 +1,22 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-#define long long long
-#define pii pair<int, int>
-#define x first
-#define y second
+#define C 1000
 
-long f[105] = {0, 1, 2};
+const int N = 20;
+bool st[N];
+int c[N];
 
 int main() {
-    for(int i = 3; i <= 100; ++i) printf("%d -> %lld\n", i, f[i] += f[i-1] + f[i-2]); 
+    srand(time(NULL));
+    for(int i = 0; i < N; ++i) st[i] = rand() & 1;
+    for(int k = 0;; ++k) {
+        for(int i = 0; i < N; ++i) {
+            if(st[i] == (rand() & 1)) {
+                if(i == 15) return !printf("%d\n", k);
+                break;
+            }
+        }
+    } 
+    for(int i = 0; i < N; ++i) printf("%d %d\n", i, c[i]);
 }
