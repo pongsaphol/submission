@@ -13,8 +13,8 @@ int powMod(int x) {
     int ret = 1;
     int v = 2;
     for(; x; x >>= 1) {
-        if(x & 1) ret = (ret * v) % M;
-        v = (v * v) % M;
+        if(x & 1) ret = (1ll * ret * v) % M;
+        v = (1ll * v * v) % M;
     }
     return ret;
 }
@@ -49,6 +49,8 @@ int main() {
     ans += solve(n);
     for(auto &x : V) swap(get<0>(x), get<1>(x));
     ans += solve(m);
-    if(have == 2) ans--;
-    printf("%d\n", ans % M);
+    ans %= M;
+    if(have == 2) ans = (ans - 1 + M) % M;
+    if(k == 0) ans = (ans - 1 + M) % M;
+    printf("%d\n", ans);
 }
