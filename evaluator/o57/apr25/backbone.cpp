@@ -5,10 +5,10 @@ using namespace std;
 #define x first
 #define y second
 
-const int N = 2e2+5;
+const int N = 205;
+const int M = 305;
 
 int n, m;
-bool check[N];
 int par[N][8], dep[N];
 vector<int> g[N], pos[N];
 vector<pii> que;
@@ -27,11 +27,7 @@ int get_lca(int a, int b) {
     return par[a][0];
 }
 
-int bin_lift(int u, int h) {
-    for(int i = 7; ~i; --i) if(h >> i & 1) u = par[u][i];
-    return u;
-}
-
+bool check[M];
 vector<pii> ans(11), ret;
 
 void solve(int u) {
@@ -43,24 +39,25 @@ void solve(int u) {
     if(check[u]) return void(solve(u+1));
     int a, b; tie(a, b) = que[u];
     int lca = get_lca(a, b);
-    int x = bin_lift(a, dep[a] - dep[lca] - 1), y = bin_lift(b, dep[b] - dep[lca] - 1);
-    auto f = [&](int z) {
-        ret.emplace_back(z, par[z][0]);
+    auto f = [&](int x) {
+        if(x == lca) return;
+        int jump = dep[x] - dep[lca] - 1;
+        for(int i = 7; ~i; --i) if(jump >> i & 1) x = par[x][i];
+        ret.emplace_back(x, par[x][0]);
         vector<int> res;
-        for(int v : pos[z]) if(!check[v]) res.emplace_back(v), check[v] = true;
+        for(int v : pos[x]) if(!check[v]) res.emplace_back(v), check[v] = true;
         solve(u+1);
         for(int v : res) check[v] = false;
         ret.pop_back();
     };
-    if(a != lca) f(x);
-    if(b != lca) f(y);
+    f(a), f(b);
 }
 
 int main() {
     scanf("%d %d", &n, &m);
     for(int i = 1, a, b; i < n; ++i) {
         scanf("%d %d", &a, &b);
-        g[a].emplace_back(b), g[b].emplace_back(a); 
+        g[a].emplace_back(b), g[b].emplace_back(a);
     }
     init_lca(1, 0);
     for(int i = 0, a, b; i < m; ++i) {
@@ -73,7 +70,7 @@ int main() {
         int lca = get_lca(a, b);
         while(a != lca) pos[a].emplace_back(i), a = par[a][0];
         while(b != lca) pos[b].emplace_back(i), b = par[b][0];
-    }
+    } 
     solve(0);
     printf("%d\n", (int)ans.size());
     for(pii v : ans) printf("%d %d\n", v.x, v.y);
