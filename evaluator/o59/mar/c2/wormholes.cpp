@@ -41,15 +41,17 @@ int main() {
             g[st+1].emplace_back(i, dis(pos[i], pii(c, dd)));
             g[i].emplace_back(st+1, dis(pos[i], pii(c, dd)));
         }
+        g[st].emplace_back(st+1, dis(pii(a, b), pii(c, dd)));
+        g[st+1].emplace_back(st, dis(pii(a, b), pii(c, dd)));
         vector<int> d(st+2, (int)1e9);
         priority_queue<pii, vector<pii>, greater<pii> > Q;
         Q.emplace(d[st] = 0, st);
         while(!Q.empty()) {
             pii now = Q.top(); Q.pop();
             if(now.x != d[now.y]) continue;
-            for(auto v : g[now.y]) if(d[v.x] > now.y + v.y) Q.emplace(d[v.x] = now.y + v.y, v.x);
+            for(auto v : g[now.y]) if(d[v.x] > now.x + v.y) Q.emplace(d[v.x] = now.x + v.y, v.x);
         }
-        g[st].clear(). g[st+1].clear();
+        g[st].clear(), g[st+1].clear();
         for(int i = 0; i < st; ++i) g[i].pop_back(), g[i].pop_back();
         printf("%d\n", d[st+1]);
     }

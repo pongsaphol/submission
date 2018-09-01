@@ -3,15 +3,21 @@ using namespace std;
 
 const int N = 105;
 
-int n, m, dp[N][N][2];
+int n, m;
+int dp[N][N][2000];
 
 int main() {
-	scanf("%d %d", &n, &m);
-	for(int i = 1; i <= n; ++i) for(int j = 1; j <= m; ++j) {
-		int now; scanf("%d", &now);
-		while(now % 2 == 0) dp[i][j][0]++, now /= 2;
-		while(now % 3 == 0) dp[i][j][1]++, now /= 3;
-		for(int k = 0; k < 2; ++k) dp[i][j][k] += dp[i-1][j][k] > dp[i][j-1][k] ? dp[i-1][j][k] : dp[i][j-1][k];
-	}
-	printf("%d\n", min(dp[n][m][0], dp[n][m][1]));
+    scanf("%d %d", &n, &m); 
+    fill_n(dp[0][0], n*n*2000, -10000000);
+    dp[1][0][0] = 0;
+    for(int i = 1; i <= n; ++i) for(int j = 1, ret; j <= m; ++j) {
+        scanf("%d", &ret); 
+        int c2 = 0, c3 = 0;
+        while(ret % 2 == 0) c2++, ret /= 2;
+        while(ret % 3 == 0) c3++, ret /= 3;
+        for(int k = c2; k < 2000; ++k) dp[i][j][k] = max(dp[i-1][j][k-c2], dp[i][j-1][k-c2]) + c3;
+    }
+    int mx = 0;
+    for(int i = 0; i < 2000; ++i) mx = max(mx, min(i, dp[n][m][i]));
+    printf("%d\n", mx);
 }
