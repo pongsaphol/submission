@@ -22,7 +22,7 @@ void dfs(int u, int p) {
 
 void solve(int u, int p) {
     check[u] = false;
-    for(pii v : g[u]) if(v.x != p) if(check[v.x]) {
+    for(pii v : g[u]) if(v.x != p and check[v.x]) {
         solve(v.x, u);
         Answer[v.y] = 'B';
         d1[u] += d1[v.x], d2[u] += d2[v.x];
