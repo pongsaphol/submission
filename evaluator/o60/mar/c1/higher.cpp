@@ -21,9 +21,6 @@ int query(int l, int r) {
 }
 
 int main() {
-	#ifdef INPUT
-	freopen("r", "r", stdin);
-	#endif
 	scanf("%d %d", &n, &k);
 	while(k--) {
 		int a, b;
