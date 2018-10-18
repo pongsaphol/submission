@@ -74,8 +74,7 @@ int main() {
     if(cnt % 2 == 0) return puts("0"), 0;
     for(int i = 1; i <= n; ++i) {
         if(g[i].size()) dfs(i, i);
-        break;
+        solve();
     }
-    solve();
     answer();
 }
