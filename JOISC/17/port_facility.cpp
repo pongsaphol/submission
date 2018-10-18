@@ -11,7 +11,7 @@ const int M = 1e9+7;
 int n, cnt, dsu[N<<1];
 vector<pii> V;
 
-int find(int x) { return dsu[x] = dsu[x] == x ? x : find(dsu[x]);}
+int find(int x) { return dsu[x] = dsu[x] == x ? x : find(dsu[x]); }
 void mge(int x, int y) { dsu[find(x)] = find(y); }
 
 int main() {
