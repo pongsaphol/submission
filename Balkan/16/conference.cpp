@@ -1,43 +1,60 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-#define pii pair<int, int>
-#define x first
-#define y second
-
 const int N = 1e6+5;
 
 int n, m, k;
-pii A[N];
-int dp[N];
-int ans[N];
-int tme[N];
-bool ist[N];
-bool know[N];
-int mat[N];
+int s[N], t[N];
+int jour[N], tme[N];
+int ans[2][N];
+
+int par[N];
+bool have[N];
+
+int find(int u) { return par[u] = par[u] == u ? u : find(par[u]); }
 
 int main() {
+    iota(par, par+N, 0);
     scanf("%d %d %d", &n, &m, &k);
-    for(int i = 1, a, b; i <= m; ++i) scanf("%d %d", &a, &b), A[i] = pii(a, b);
-    for(int i = k+1; i <= n; ++i) dp[i] = i;
+    for(int i = 1, a, b; i <= m; ++i) {
+        scanf("%d %d", &a, &b);
+        if(a > b) swap(a, b);
+        s[i] = a, t[i] = b;
+    }
+    for(int i = k+1; i <= n; ++i) jour[i] = i;
     for(int i = m; i; --i) {
-        if(!ans[A[i].x]) dp[A[i].x] = dp[A[i].y], tme[A[i].x] = i, ans[A[i].x] = dp[A[i].y]; 
-        if(!ans[A[i].y]) dp[A[i].y] = dp[A[i].x], tme[A[i].y] = i, ans[A[i].y] = dp[A[i].x]; 
-        if(A[i].y > k and A[i].x <= k) dp[A[i].x] = A[i].y;
-        if(A[i].x > k and A[i].y <= k) dp[A[i].y] = A[i].x;
+        if(s[i] > k) tme[s[i]] = i;
+        if(t[i] > k) tme[t[i]] = i;
+        if(s[i] > k and t[i] > k) continue;
+        if(s[i] <= k and t[i] > k) {
+            tme[s[i]] = tme[t[i]], jour[s[i]] = jour[t[i]];
+            if(!ans[0][s[i]]) ans[0][s[i]] = i, ans[1][s[i]] = jour[t[i]];
+            continue;
+        }
+        if(!ans[0][s[i]] and !ans[0][t[i]])  continue;
+        if(ans[0][s[i]] and ans[0][t[i]]) {
+            if(tme[s[i]] > tme[t[i]]) swap(s[i], t[i]);
+            jour[t[i]] = jour[s[i]], tme[t[i]] = tme[s[i]];
+            continue;
+        }
+        if(ans[0][s[i]] and !ans[0][t[i]]) swap(s[i], t[i]);
+        tme[s[i]] = tme[t[i]], jour[s[i]] = jour[t[i]];
+        ans[0][s[i]] = i, ans[1][s[i]] = jour[s[i]];
     }
-    for(int i = 1; i <= k; ++i) printf("%d ", dp[i] ? tme[i] : -1);
-    puts("");
-    for(int i = 1; i <= k; ++i) if(dp[i]) mat[tme[i]] = i;
     for(int i = 1; i <= m; ++i) {
-        if(mat[i]) know[mat[i]] = true;
-        know[A[i].x] |= know[A[i].y], know[A[i].y] |= know[A[i].x];
+        if(ans[0][s[i]] == i) have[s[i]] = true;
+        if(ans[0][t[i]] == i) have[t[i]] = true;
+        int a = find(s[i]), b = find(t[i]);
+        if(have[a]) par[b] = a;
+        else if(have[b]) par[a] = b;
     }
-    vector<int> ans;
-    for(int i = k+1; i <= m; ++i) if(know[i]) ans.emplace_back(i);
-    printf("%d ", (int)ans.size());
-    for(auto x : ans) printf("%d ", x);
+    for(int i = 1; i <= k; ++i) printf("%d ", ans[0][i] ? ans[0][i] : -1);
     puts("");
-    for(int i = 1; i <= k; ++i) printf("%d ", ans[i] ? ans[i] : -1);
+    vector<int> ret;
+    for(int i = k+1; i <= n; ++i) if(have[find(i)]) ret.emplace_back(i);
+    printf("%d ", (int)ret.size());
+    for(int v : ret) printf("%d ", v);
+    puts("");
+    for(int i = 1; i <= k; ++i) printf("%d ", ans[1][i] ? ans[1][i] : -1);
     puts("");
 }
