@@ -50,5 +50,4 @@ int main() {
         for(int i = 1; i <= m; ++i) for(int j = 1; j <= m; ++j) mn = min(mn, dis(s, coor[i-1]) + ::d[i][j] + dis(coor[j-1], t));
         printf("%lld\n", mn);
     } 
-
 }
