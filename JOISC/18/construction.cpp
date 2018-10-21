@@ -69,7 +69,7 @@ void update(int u, int v) {
             if(chain[rot[u]].front().y <= sz) sz -= chain[rot[u]].front().y, chain[rot[u]].pop_front();
             else {  chain[rot[u]].front().y -= sz; break; }
         }
-        chain[rot[u]].emplace_front(v, dep[rot[u]] - dep[u] + 1);
+        chain[rot[u]].emplace_front(v, dep[u] - dep[rot[u]] + 1);
         u = par[rot[u]];
     }
 }
