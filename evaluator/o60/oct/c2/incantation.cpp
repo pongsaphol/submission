@@ -30,16 +30,16 @@ public:
 		for(int i = 0; i < lm; ++i) dp[i>>1][i] = dp[im|i>>1][i] = input();
 		vector<long> vec(lm);
 		for(n -= m-1; n; n >>= 1) {
-		    if(n & 1) {
-                vector<long> now(lm);
-                for(int i = 0; i < lm; ++i) for(int j = 0; j < lm; ++j)
-                    if(now[j] < vec[i] + dp[i][j]) now[j] = vec[i] + dp[i][j];
-                vec = now;
-		    }
-            vector<vector<long> > rdp(lm, vector<long>(lm));
-		    for(int k = 0; k < lm; ++k) for(int i = 0; i < lm; ++i) for(int j = 0; j < lm; ++j)
-		        rdp[i][j] = max(rdp[i][j], dp[i][k] + dp[k][j]);
-		    dp = rdp;
+			if(n & 1) {
+				vector<long> now(lm);
+				for(int i = 0; i < lm; ++i) for(int j = 0; j < lm; ++j)
+					if(now[j] < vec[i] + dp[i][j]) now[j] = vec[i] + dp[i][j];
+				vec = now;
+			}
+			vector<vector<long> > rdp(lm, vector<long>(lm));
+			for(int k = 0; k < lm; ++k) for(int i = 0; i < lm; ++i) for(int j = 0; j < lm; ++j)
+			rdp[i][j] = max(rdp[i][j], dp[i][k] + dp[k][j]);
+			dp = rdp;
 		}
 		cout << *max_element(all(vec)) << endl;
 	}
