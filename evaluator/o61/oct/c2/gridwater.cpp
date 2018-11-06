@@ -14,8 +14,6 @@ int n, m, H[N], dep[N];
 pii par[N][18];
 vector<iii> E, del;
 
-int find(int u) { return H[u] == u ? u : find(H[u]);}
-
 void init_lca(int u, int p) {
     for(int i = 1; i < 18; ++i) par[u][i] = pii(par[par[u][i-1].x][i-1].x, max(par[u][i-1].y, par[par[u][i-1].x][i-1].y));
     for(auto v : g[u]) if(v.x != p) {
@@ -55,6 +53,8 @@ int main() {
             }
         }
     }
+    function<int(int)> find;
+    find = [&](int u) { return H[u] == u ? u : find(H[u]); };
 	sort(all(E));
 	for(auto x : E) {
 		int u, v, w; tie(w, u, v) = x;
