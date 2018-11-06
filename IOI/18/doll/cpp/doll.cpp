@@ -1,3 +1,9 @@
+/*
+First, I can think case build complete binary tree
+but it use 2*N node on case N = 2^i + 1
+I observaton for some node is can delete
+and the edge back to root of tree
+*/
 #include "doll.h"
 #include <bits/stdc++.h>
 #define pii pair<int, int>
