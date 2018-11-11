@@ -1,3 +1,10 @@
+/*
+ first I think it is very hard problem
+ and I got hint square root
+ preprocess each block of size most sqrt
+ if Y_i is < sqrt -> query in block
+ else solve with topo order 
+*/
 #include <bits/stdc++.h>
 #define all(x) x.begin(), x.end()
 #define pii pair<int, int>
