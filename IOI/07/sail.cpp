@@ -1,3 +1,11 @@
+/*
+ * first I think the small height have less than way to choose sail to place
+ * I sorted from lowest height to highest hight and I greedy to place sail that have
+ * lowest number, for each row sum = 0 + 1 + 2 + ... + A_i = A_i * (A_i + 1) / 2
+ * the answer is sum of all
+ * I tried to solve greedy solution O(n^2) and I got 30 point
+ * I think it can opt by fenwick tree because it is non increasing sequence
+ */
 #include <bits/stdc++.h>
 #define long long long
 #define pii pair<int, int>
