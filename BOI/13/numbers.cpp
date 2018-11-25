@@ -24,8 +24,8 @@ const int dx[4] = {-1, 0, 1, 0}, dy[4] = {0, 1, 0, -1};
 class numbers {
 private:
 	long a, b;
-    char inp[25];
-    long dp[25][11][11][2];
+	char inp[25];
+	long dp[25][11][11][2];
    	long solve(int n, int a, int b, bool st) {
 		long &val = dp[n][a][b][st];
 		if(~val) return val;
