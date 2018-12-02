@@ -49,7 +49,7 @@ private:
 		for(int v : g[u]) if(v != p and !check[v]) dfs(v, u, d ^ A[v], st);
 	}
 	void solve(int u, int sz) {
-	    memset(step, 0, sizeof step);
+		memset(step, 0, sizeof step);
 		pii ret(sz, -1);
 		find(u, 0, sz, ret);
 		check[u = ret.y] = true;
