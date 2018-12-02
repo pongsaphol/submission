@@ -1,3 +1,10 @@
+/*
+ - collect grundy number for each state gnum[x][y][st] -> cop is at pos x, rob is at pos y, turn 0 = cop, 1 = rob
+ - start with end state [x][x][0] and [x][x][1] is state that cop can catch rob
+ - use queue bfs find state that can reach this state
+ - state rob is all rob can reach state cop set move
+ - if one cop at least can reach rob state set move
+*/
 #include <bits/stdc++.h>
 #define iii tuple<int, int, bool>
 #include "coprobber.h"
