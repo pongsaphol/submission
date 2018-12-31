@@ -1,62 +1,71 @@
 #include <bits/stdc++.h>
-#define all(x) (x).begin(), (x).end()
-#define long long long
-#define pii pair<int, int>
-#define x first
-#define y second
+#define complex complex<double>
 using namespace std;
-const long MOD = 1e9+7, LINF = 1e18 + 1e16;
-const int INF = 1e9+1;
-const double EPS = 1e-10;
-const int dx[4] = {-1, 0, 1, 0}, dy[4] = {0, 1, 0, -1};
 
 const int N = 1<<20;
-const long M = 998244353, G = 3;
+const long G = 3;
+const long M = 998244353;
 
-class DFT_prog {
-private:
-int n, k;
-    long A[N];
-    long power(long a, long r) {
-        long ret = 1;
-        for(; r; r >>= 1, a = a * a % M) if(r & 1) ret = ret * a % M;
-        return ret;
-    }
-    void DFT(long A[], int n, bool inv = false) {
-        int *rev = new int[n];
-        for(int i = 0; i < n; ++i) {
-            rev[i] = i ? rev[i>>1] >> 1 | (i & 1 ? n >> 1 : 0) : 0;
-            if(i < rev[i]) swap(A[i], A[rev[i]]);
-        }
-        delete []rev;
-        for(int m = 1; m < n; m <<= 1) {
-            long omega = power(G, (M-1) / m >> 1);
-            if(inv) omega = power(omega, M-2);
-            for(int j = 0; j < n; j += m << 1) {
-                long w = 1, u, v;
-                int l = j, r = j+m;
-                for(int k = 0; k < m; ++k, ++l, ++r, w = w * omega % M) {
-                    u = A[l], v = A[r] * w % M;
-                    A[l] = (u + v) % M;
-                    A[r] = (u - v + M) % M;
-                }
+int rev[N];
+
+void init() {
+    for(int i = 0; i < N; ++i) rev[i] = rev[i>>1]>>1 | ((i&1) * (N>>1));
+}
+long power(long a, long r) {
+    long ret = 1;
+    for(; r; r >>= 1, a = a * a % M) if(r & 1) ret = ret * a % M;
+    return ret;
+}
+void NTT(long A[], bool inv = false) {
+    for(int i = 0; i < N; ++i) if(i < rev[i]) swap(A[i], A[rev[i]]);
+    for(int i = 1; i < N; i <<= 1) {
+        long omega = power(G, (M-1) / i >> 1);
+        if(inv) omega = power(omega, M-2);
+        for(int j = 0; j < N; j += i << 1) {
+            long w = 1, u, v;
+            int l = j, r = i+j;
+            for(int k = 0; k < i; ++k, ++l, ++r, w = w * omega % M) {
+                u = A[l], v = A[r] * w % M;
+                A[l] = (u + v) % M;
+                A[r] = (u - v + M) % M;
             }
         }
-        if(inv) {
-            long z = power(n, M-2);
-            for(int i = 0; i < n; ++i, ++A) *A = *A * z % M;
-        }
     }
-public:
-    void solve(istream& cin, ostream& cout) {
-        cin >> n >> k;
-        for(int i = 0, val; i < k; ++i) cin >> val, A[val] = 1;
-        int m = 1<<20;
-        DFT(A, m);
-        for(int i = 0; i < m; ++i) A[i] = power(A[i], n / 2);
-        DFT(A, m, true);
-        long ans = 0;
-        for(int i = 0; i < m; ++i) ans = (ans + A[i] * A[i]) % M;
-        cout << ans << endl;
+    if(inv) {
+        long z = power(N, M-2);
+        for(int i = 0; i < n; ++i, ++A) *A = *A * z % M;
+    }
+}
+/*
+struct complex {
+    double x, y;
+    complex() : x(0), y(0) {}
+    complex(double x, double y) : x(x), y(y) {}
+    friend complex operator+(const complex &a, const complex &b) {
+        return complex(a.x+b.x, a.y+b.y);
+    }
+    friend complex operator-(const complex &a, const complex &b) {
+        return complex(a.x-b.x, a.y-b.y);
+    }
+    friend complex operator*(const complex &a, const complex &b) {
+        return complex(a.x*b.x - a.y*b.y, a.x*b.y + a.y*b.x);
     }
 };
+*/
+void FFT(complex A[], bool inv = false) {
+    double pi = acos(-1.0);
+    for(int i = 0; i < N; ++i) if(i < rev[i]) swap(A[i], A[rev[i]]);
+    for(int i = 1; i < N; i <<= 1) {
+        complex omega(cos(2*pi / (i<<1)), (inv ? -1 : 1) * sin(2*pi / (i<<1)));
+        for(int j = 0; j < N; j += i << 1) {
+            complex w(1, 0), u, v;
+            int l = j, r = i+j;
+            for(int k = 0; k < i; ++k, ++l, ++r, w = w * omega) {
+                u = A[l], v = A[r] * w;
+                A[l] = u + v;
+                A[r] = u - v;
+            }
+        }
+    }
+    if(inv) for(int i = 0; i < N; ++i) A[i] /= N;
+}
