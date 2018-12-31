@@ -36,7 +36,7 @@ void NTT(long A[], bool inv = false) {
         for(int i = 0; i < n; ++i, ++A) *A = *A * z % M;
     }
 }
-/*
+
 struct complex {
     double x, y;
     complex() : x(0), y(0) {}
@@ -51,7 +51,7 @@ struct complex {
         return complex(a.x*b.x - a.y*b.y, a.x*b.y + a.y*b.x);
     }
 };
-*/
+
 void FFT(complex A[], bool inv = false) {
     double pi = acos(-1.0);
     for(int i = 0; i < N; ++i) if(i < rev[i]) swap(A[i], A[rev[i]]);
