@@ -33,11 +33,12 @@ int n, k;
             long omega = power(G, (M-1) / m >> 1);
             if(inv) omega = power(omega, M-2);
             for(int j = 0; j < n; j += m << 1) {
-                long *l = A+j, *r = l+m, w = 1, u, v;
+                long w = 1, u, v;
+                int l = j, r = j+m;
                 for(int k = 0; k < m; ++k, ++l, ++r, w = w * omega % M) {
-                    u = *l, v = *r * w % M;
-                    *l = (u + v) % M;
-                    *r = (u - v + M) % M;
+                    u = A[l], v = A[r] * w % M;
+                    A[l] = (u + v) % M;
+                    A[r] = (u - v + M) % M;
                 }
             }
         }
