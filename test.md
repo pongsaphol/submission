@@ -8,6 +8,6 @@
 
 # FFT
 ## Coefficient Representation
-พหุนาม ![](https://latex.codecogs.com/svg.latex?\inline&space;P&space;=&space;a_0x^0&space;&plus;&space;a_1x^1&space;&plus;&space;a_2x^2&space;&plus;&space;\dotsc&space;&plus;&space;a_{n-1}x^{n-1}) ที่มี degree $n-1$ สามารถเขียนในรูป $C = {a_0, a_1, a_2, \dotsc, a_{n-1}}$
+พหุนาม ![](https://latex.codecogs.com/png.latex?\inline&space;P&space;=&space;a_0x^0&space;&plus;&space;a_1x^1&space;&plus;&space;a_2x^2&space;&plus;&space;\dotsc&space;&plus;&space;a_{n-1}x^{n-1}) ที่มี degree $n-1$ สามารถเขียนในรูป $C = {a_0, a_1, a_2, \dotsc, a_{n-1}}$
 ## Point-Value Representation
 พหุนาม $P = a_0x^0 + a_1x^1 + a_2x^2 + \dotsc + a_{n-1}x^{n-1}$ ที่มี degree $n-1$ สามารถเขียนในรูป $S = {(x_0, y_0), (x_1, y_1), (x_2, y_2), ..., (x_{n-1}, y_{n-1})}$ โดยที่ $x_0 \neq x_1 \neq x_2 \neq \dotsc \neq x_{n-1}$ และ $y_0 = P(x_0), y_1 = P(x_1), y_2 = P(x_2), \dotsc, y_{n-1} = P(x_{n-1})$
