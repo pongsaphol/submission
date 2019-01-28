@@ -37,26 +37,11 @@ void NTT(long A[], bool inv = false) {
     }
 }
 
-struct complex {
-    double x, y;
-    complex() : x(0), y(0) {}
-    complex(double x, double y) : x(x), y(y) {}
-    friend complex operator+(const complex &a, const complex &b) {
-        return complex(a.x+b.x, a.y+b.y);
-    }
-    friend complex operator-(const complex &a, const complex &b) {
-        return complex(a.x-b.x, a.y-b.y);
-    }
-    friend complex operator*(const complex &a, const complex &b) {
-        return complex(a.x*b.x - a.y*b.y, a.x*b.y + a.y*b.x);
-    }
-};
-
 void FFT(complex A[], bool inv = false) {
     double pi = acos(-1.0);
     for(int i = 0; i < N; ++i) if(i < rev[i]) swap(A[i], A[rev[i]]);
     for(int i = 1; i < N; i <<= 1) {
-        complex omega(cos(2*pi / (i<<1)), (inv ? -1 : 1) * sin(2*pi / (i<<1)));
+        complex omega(cos(pi / i), (inv ? -1 : 1) * sin(pi / i));
         for(int j = 0; j < N; j += i << 1) {
             complex w(1, 0), u, v;
             int l = j, r = i+j;
