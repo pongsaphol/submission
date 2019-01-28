@@ -5,7 +5,7 @@
 
 # ประโยชน์
 โดยปกติ การคูณพหุนามสามารถทำได้ง่ายใน `O(n^2)` แต่มีอัลกอที่มีประสิทธิภาพที่สามารถทำได้เพียง $$O(n log n)$$ เท่านั้น
-
+![](https://latex.codecogs.com/svg.latex?\dpi{300}&space;P=a_0x^0&plus;a_1x^1&plus;a_2x^2&plus;...&plus;a_{n-1}x^{n-1})
 # FFT
 ## Coefficient Representation
 พหุนาม $P = a_0x^0 + a_1x^1 + a_2x^2 + \dotsc + a_{n-1}x^{n-1}$ ที่มี degree $n-1$ สามารถเขียนในรูป $C = {a_0, a_1, a_2, \dotsc, a_{n-1}}$
