@@ -7,8 +7,7 @@
 # Fast Fourier Transform
 ## Coefficient Representation
 พหุนาม 
-![](https://latex.codecogs.com/svg.latex?\inline&space;P&space;=&space;a_0x^0&space;&plus;&space;a_1x^1&space;&plus;&space;a_2x^2&space;&plus;&space;\dotsc&space;&plus;&space;a_{n-1}x^{n-1}) 
-ที่มี `degree n-1` สามารถเขียนในรูป 
+![](https://latex.codecogs.com/svg.latex?\inline&space;P&space;=&space;a_0x^0&space;&plus;&space;a_1x^1&space;&plus;&space;a_2x^2&space;&plus;&space;\dotsc&space;&plus;&space;a_{n-1}x^{n-1}) ที่มี `degree n-1` สามารถเขียนในรูป 
 ![](https://latex.codecogs.com/svg.latex?\inline&space;C&space;=&space;\{a_0,&space;a_1,&space;a_2,&space;\dotsc,&space;a_{n-1}\})
 ## Point-Value Representation
 พหุนาม 
