@@ -11,4 +11,11 @@
 ที่มี degree `n-1` สามารถเขียนในรูป 
 ![](https://latex.codecogs.com/svg.latex?\inline&space;C&space;=&space;\{a_0,&space;a_1,&space;a_2,&space;\dotsc,&space;a_{n-1}\})
 ## Point-Value Representation
-พหุนาม $P = a_0x^0 + a_1x^1 + a_2x^2 + \dotsc + a_{n-1}x^{n-1}$ ที่มี degree $n-1$ สามารถเขียนในรูป $S = {(x_0, y_0), (x_1, y_1), (x_2, y_2), ..., (x_{n-1}, y_{n-1})}$ โดยที่ $x_0 \neq x_1 \neq x_2 \neq \dotsc \neq x_{n-1}$ และ $y_0 = P(x_0), y_1 = P(x_1), y_2 = P(x_2), \dotsc, y_{n-1} = P(x_{n-1})$
+พหุนาม 
+![](https://latex.codecogs.com/svg.latex?\inline&space;P&space;=&space;a_0x^0&space;&plus;&space;a_1x^1&space;&plus;&space;a_2x^2&space;&plus;&space;\dotsc&space;&plus;&space;a_{n-1}x^{n-1})  
+ที่มี degree `n-1` สามารถเขียนในรูป
+![](https://latex.codecogs.com/svg.latex?\inline&space;S&space;=&space;\{(x_0,&space;y_0),&space;(x_1,&space;y_1),&space;(x_2,&space;y_2),&space;...,&space;(x_{n-1},&space;y_{n-1})\})
+โดยที่ 
+![](https://latex.codecogs.com/svg.latex?\inline&space;x_0&space;\neq&space;x_1&space;\neq&space;x_2&space;\neq&space;\dotsc&space;\neq&space;x_{n-1})
+และ
+![](https://latex.codecogs.com/svg.latex?\inline&space;y_0&space;=&space;P(x_0),&space;y_1&space;=&space;P(x_1),&space;y_2&space;=&space;P(x_2),&space;\dotsc,&space;y_{n-1}&space;=&space;P(x_{n-1}))
