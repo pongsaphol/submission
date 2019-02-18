@@ -1,3 +1,10 @@
+/*
+first any path pass centroid
+I build centroid tree because it collect atmost O(log n)
+A[i] - d(i, j) = A[i] - d(i, centroid) - d(centroid, j)
+for every centroid node I collect max(A[i] - d(i, centroid)) and second max
+because if it from query subtree I will not think that node
+*/
 #include <bits/stdc++.h>
 #define all(x) (x).begin(), (x).end()
 #define vi vector<int>
