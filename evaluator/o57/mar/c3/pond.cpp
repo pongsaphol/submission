@@ -1,89 +1,84 @@
-#pragma comment(linker, "/stack:200000000")
-#pragma GCC optimize("Ofast")
-#pragma GCC target("sse,sse2,sse3,ssse3,sse4,popcnt,abm,mmx,avx,tune=native")
 #include <bits/stdc++.h>
-#define P pair<int, int>
+#define all(x) (x).begin(), (x).end()
+#define vi vector<int>
+#define iii tuple<int, int, int>
+#define long long long
+#define pii pair<int, int>
 #define x first
 #define y second
-#define long long long
 using namespace std;
+const long MOD = 1e9+7, LINF = 1e18 + 1e16;
+const int INF = 1e9+1;
+const double EPS = 1e-10;
+const int dx[4] = {-1, 0, 1, 0}, dy[4] = {0, 1, 0, -1};
 
-const int MAXN = 35;
+const int N = 55;
 
-long d[MAXN][MAXN][1<<4], inf = 1e18;
-int X[] = {0, 0, 1, -1}, Y[] = {-1, 1, 0, 0};
-int n, m, A[MAXN][MAXN], comp[MAXN][MAXN];
-bool chk[MAXN][MAXN];
-
-bool go(int x, int y) {
-	return x >= 1 && x <= n && y >= 1 && y <= m;
-}
-
-void flood(int x, int y, int val) {
-	queue<P> Q;
-	Q.emplace(x, y);
-	comp[x][y] = val;
-	while(!Q.empty()) {
-		auto now = Q.front();
-		Q.pop();
-		for(int i = 0; i < 4; ++i) {
-			int x = now.x + X[i], y = now.y + Y[i];
-			if(go(x, y) && !A[x][y] && comp[x][y] == -2) {
-				comp[x][y] = val;
-				Q.emplace(x, y);
-			}
-			if(go(x, y) && A[x][y]) if(val == -1) chk[x][y] = true;
-		}
-	}
-}
-
-long mn = inf;
-int cnt = 0, sx, sy;
-
-void dfs(int xc, int yc, int bitc) {
-	if((1<<cnt) - 1 == bitc) {
-		mn = min(mn, d[xc][yc][bitc]);
-		return;
-	}
-	for(int i = 0; i < 4; ++i) {
-		int x = xc + X[i], y = yc + Y[i], bit = bitc;
-		if(!go(x, y) || chk[x][y]) continue;
-		if(comp[x][y] >= 0) bit |= (1 << comp[x][y]);
-		if(d[x][y][bit] > d[xc][yc][bitc] + A[x][y]) {
-			d[x][y][bit] = d[xc][yc][bitc] + A[x][y];
-			int old = A[x][y];
-			A[x][y] = 0;
-			dfs(x, y, bit);
-			A[x][y] = old;
-		}
-	}
-}
-
-int main() {
-	#ifdef INPUT
-	freopen("r", "r", stdin);
-	#endif
-	scanf("%d %d", &n, &m);
-	for(int i = 1; i <= n; ++i) for(int j = 1; j <= m; ++j) {
-		scanf("%d", &A[i][j]);
-		comp[i][j] = -2;
-	}
-	for(int i = 1; i <= n; ++i) {
-		if(!A[i][1] && comp[i][1] == -2) flood(i, 1, -1);
-		if(!A[i][m] && comp[i][m] == -2) flood(i, m, -1);
-	}
-	for(int i = 1; i <= m; ++i) {
-		if(!A[1][i] && comp[1][i] == -2) flood(1, i, -1);
-		if(!A[n][i] && comp[n][i] == -2) flood(n, i, -1);
-	}
-	fill(d[0][0], d[31][31] + (1<<4), inf);
-	for(int i = 1; i <= n; ++i) for(int j = 1; j <= m; ++j) {
-		if(!A[i][j] && comp[i][j] == -2) {
-			if(!cnt) sx = i, sy = j;
-			flood(i, j, cnt++);
-		}
-	}
-	d[sx][sy][1] = 0;
-	dfs(sx, sy, 1);
-	printf("%lld\n", mn);
-}
+class pond {
+private:
+    int n, m;
+    int inp[N][N];
+    int col[N][N];
+    int dp[1<<4][N][N];
+    int step;
+    void bfs() {
+        queue<pii> Q; Q.emplace(0, 0), col[0][0] = -2;
+        while(!Q.empty()) {
+            int x = Q.front().x, y = Q.front().y; Q.pop();
+            for(int i = 0; i < 4; ++i) {
+                int nx = x + dx[i], ny = y + dy[i];
+                if(nx < 0 || nx > n+1 || ny < 0 || ny > m+1) continue;
+                if(inp[nx][ny]) inp[nx][ny] = INF;
+                if(inp[nx][ny] || col[nx][ny] != -1) continue;
+                col[nx][ny] = -2;
+                Q.emplace(nx, ny);
+            }
+        }
+    }
+public:
+    void solve(istream& cin, ostream& cout) {
+        fill_n(dp[0][0], (1<<4) * N * N, INF);
+        memset(col, -1, sizeof col);
+        cin >> n >> m;
+        for(int i = 1; i <= n; ++i) for(int j = 1; j <= m; ++j) cin >> inp[i][j];
+        bfs();
+        for(int i = 1; i <= n; ++i) for(int j = 1; j <= m; ++j) if(col[i][j] == -1 && !inp[i][j]){
+            queue<pii> Q; Q.emplace(i, j), col[i][j] = step;
+            while(!Q.empty()) {
+                int x = Q.front().x, y = Q.front().y; Q.pop();
+                dp[1<<step][x][y] = 0;
+                for(int i = 0; i < 4; ++i) {
+                    int nx = x + dx[i], ny = y + dy[i];
+                    if(nx < 0 || nx > n+1 || ny < 0 || ny > m+1) continue;
+                    if(inp[nx][ny] || col[nx][ny] != -1) continue;
+                    col[nx][ny] = step;
+                    Q.emplace(nx, ny);
+                }
+            }
+            step++;
+        }
+        for(int k = 1; k < (1 << step); ++k) {
+            for(int u = k; u; u = (u-1) & k) {
+                int v = k - u;
+                for(int i = 1; i <= n; ++i) for(int j = 1; j <= m; ++j) {
+                    dp[k][i][j] = min(dp[k][i][j], dp[u][i][j] + dp[v][i][j] - inp[i][j]);
+                }
+            }
+            priority_queue<iii, vector<iii>, greater<iii>> Q;
+            for(int i = 1; i <= n; ++i) for(int j = 1; j <= m; ++j) Q.emplace(dp[k][i][j], i, j);
+            while(!Q.empty()) {
+                int z, x, y; tie(z, x, y) = Q.top(); Q.pop();
+                if(z != dp[k][x][y]) continue;
+                for(int i = 0; i < 4; ++i) {
+                    int nx = x + dx[i], ny = y + dy[i];
+                    int nz = z + inp[nx][ny];
+                    if(nx < 0 || nx > n+1 || ny < 0 || ny > m+1) continue;
+                    if(dp[k][nx][ny] > nz) Q.emplace(dp[k][nx][ny] = nz, nx, ny);
+                }
+            }
+        }
+        int mn = INF;
+        for(int i = 1; i <= n; ++i) for(int j = 1; j <= m; ++j) mn = min(mn, dp[(1<<step)-1][i][j]);
+        cout << mn << endl;
+    }
+};

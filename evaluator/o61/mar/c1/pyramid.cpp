@@ -1,74 +1,43 @@
 #include <bits/stdc++.h>
+#define all(x) (x).begin(), (x).end()
+#define vi vector<int>
+#define iii tuple<int, int, int>
+#define long long long
+#define pii pair<int, int>
+#define x first
+#define y second
 using namespace std;
+const long MOD = 1e9+7, LINF = 1e18 + 1e16;
+const int INF = 1e9+1;
+const double EPS = 1e-10;
+const int dx[4] = {-1, 0, 1, 0}, dy[4] = {0, 1, 0, -1};
 
-const int MAXN = 5005;
+const int N = 15005;
 
-int t[2][MAXN][MAXN];
-
-void upd(int _x, int x, int y) {
-	for(int i = x; i < MAXN; i += i&-i) {
-		for(int j = y; j < MAXN; j += j&-j) {
-			t[_x][i][j]++;
-		}
-	}
-}
-
-int que(int _x, int x, int y) {
-	int sum = 0;
-	for(int i = x; i != 0; i -= i&-i) {
-		for(int j = y; j != 0; j -= j&-j) {
-			sum += t[_x][i][j];
-		}
-	}
-	return sum;
-}
-
-int n;
-void find(int &x, int &y) {
-	int sm = 7501 - x;
-	int lev = (y+1)/2 + (5001-x)/2;
-	x = sm - lev + 1, y = lev + 1;
-}
-
-int main() {
-	#ifdef INPUT
-	freopen("r", "r", stdin);
-	#endif
-	scanf("%d", &n);
-	// for(int i = 5; i != 1; --i) {
-	// 	for(int j = 1; j <= 6; ++j) {
-	// 		int x = i, y = j;
-	// 		find(x, y);
-	// 		printf("(%d, %d)", x, y);
-	// 	}
-	// 	puts("");
-	// }
-	while(n--) {
-		int a, b;
-		scanf("%d %d", &a, &b);
-		swap(a, b);
-		if(a%2 != b%2) {
-			int x = a, y = b;
-			find(x, y);
-			printf("%d\n", que(0, x, y));
-			upd(0, x, y);
-			// printf("0 : %d %d\n", x, y);
-			// x = a, y = b-1;
-			// find(x, y);
-			// printf("1 : %d %d\n", x, y);
-			upd(1, x, y);
-		} else {
-			int x = a+1, y = b;
-			find(x, y);
-			
-			printf("%d\n", que(1, x, y));
-			upd(1, x, y);
-			// printf("1 : %d %d\n", x, y);
-
-			x = a-1, y = b;
-			find(x, y);
-			// printf("0 : %d %d\n", x, y);
-			upd(0, x, y);
-		}
-	}
-}
+class pyramid {
+private:
+    int n;
+    short t[N][N];
+    void update(int x, int y, int v) {
+        for(int i = x; i <= N; i += i & -i) {
+            for(int j = y; j <= N; j += j & -j) t[i][j] += v;
+        }
+    }
+    int query(int x, int y, int v = 0) {
+        for(int i = x; i; i -= i & -i) {
+            for(int j = y; j; j -= j & -j) v += t[i][j];
+        }
+        return v;
+    }
+public:
+    void solve(istream& cin, ostream& cout) {
+        for(int i = 1; i <= N; ++i) t[i].resize(i+2);
+        cin >> n;
+        for(int i = 0, x, y; i < n; ++i) {
+            cin >> x >> y;
+            int a = x-y+5001, b = x+y+5001;
+            cout << query(a, b) << endl;
+            update(a, a, 1), update(a, b+1, -1), update(b+1, a, -1), update(b+1, b+1, 1);
+        }
+    }
+};
