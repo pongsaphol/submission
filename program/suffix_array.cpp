@@ -1,40 +1,29 @@
 #include <bits/stdc++.h>
-#define all(x) (x).begin(), (x).end()
-#define vi vector<int>
-#define iii tuple<int, int, int>
-#define long long long
-#define pii pair<int, int>
-#define x first
-#define y second
 using namespace std;
-const long MOD = 1e9+7, LINF = 1e18 + 1e16;
-const int INF = 1e9+1;
-const double EPS = 1e-10;
-const int dx[4] = {-1, 0, 1, 0}, dy[4] = {0, 1, 0, -1};
 
-const int N = 5e4+5;
+const int N = 1e5+5;
 
-class suffix_array {
-private:
-    int n, pos[N], ret[N], idx;
-    char A[N];
-    vector<pair<pii, int>> vec;
-    void cmpidx() {
-        sort(all(vec));
-        idx = ret[0] = 1;
-        for(int i = 1; i < n; ++i) ret[i] = idx += (vec[i].x != vec[i-1].x);
-        for(int i = 0; i < n; ++i) pos[vec[i].y] = vec[i].x.x = ret[i];
-    }
-public:
-    void solve(istream& cin, ostream& cout) {
-        cin >> A;
-        n = strlen(A);
-        for(int i = 0; i < n; ++i) vec.emplace_back(pii(A[i], 0), i);
-        cmpidx();
-        for(int i = 1; i < n; i <<= 1) {
-            for(int j = 0; j < n; ++j) vec[j].x.y = pos[vec[j].y+i >= n ? n : vec[j].y+i];
-            cmpidx();
-        }
-        for(int i = 0; i < n; ++i) cout << pos[i] << endl;
-    }
-};
+char A[N];
+int n, pos[N], sa[N], lcp[N], tmp[N];
+
+int main() {
+	scanf("%s", A);	
+	n = strlen(A);
+	for(int i = 0; i < n; ++i) pos[i] = A[i], sa[i] = i;
+	for(int gap = 1; ; gap <<= 1) {
+		auto cmp = [&](int a, int b) {
+			if(pos[a] != pos[b]) return pos[a] < pos[b];
+			a += gap, b += gap;
+			return (a < n && b < n ? pos[a] < pos[b] : a > b);
+		};
+		sort(sa, sa+n, cmp);
+		for(int i = 1; i < n; ++i) tmp[i] = tmp[i-1] + cmp(sa[i-1], sa[i]);
+		for(int i = 0; i < n; ++i) pos[sa[i]] = tmp[i];
+		if(tmp[n-1] == n-1) break;
+	}
+	for(int i = 0, k = 0; i < n; ++i) if(pos[i] != n-1) {
+		for(int j = sa[pos[i]+1]; max(i+k, j+k) < n && A[i+k] == A[j+k];) k++;
+		lcp[pos[i]] = k;
+		if(k) k--;
+	} else k = 0;
+}
