@@ -1,3 +1,9 @@
+/*
+ I compose nearby node to one node
+ if have a[x][y] ^ a[x][y+1] ^ a[x][y+k] -> compose to one node
+ it will be tree
+ easy to solve with dp one tree
+*/
 #include <bits/stdc++.h>
 #define long long long
 #define all(x) (x).begin(), (x).end()
