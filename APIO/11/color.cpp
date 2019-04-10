@@ -1,3 +1,13 @@
+/*
+ let fix row1, col1
+ a[i][j] = a[1][1] ^ a[1][j] ^ a[i][1] ^ ((i % 2 == 0) && (j % 2 == 0))
+ a[1][j] ^ a[i][1] = a[i][j] ^ a[1][1] ^ ((i % 2 == 0) && (j % 2 == 0))
+ solve with fix a[1][1] to true and false
+ I will solve with count component of bipartite graph
+ if a[1][j] ^ a[i][1] = 0 -> a[1][j] == a[i][1] -> addEdge(a[1][j], z), addEdge(z, a[i][1])
+ if(a[1][j] ^ a[i][1] = 1 -> a[1][j] != a[i][1] -> addEdge(a[1][j], a[i][1])
+ answer = 2^(component)
+*/
 #include <bits/stdc++.h>
 #define iii tuple<int, int, int>
 
