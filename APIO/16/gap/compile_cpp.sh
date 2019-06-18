@@ -1,3 +1,3 @@
 #!/bin/sh
 
-g++ gap.cpp grader.cpp -o gap -O2 -static -std=c++11
+g++-8 gap.cpp grader.cpp -o gap -std=c++11
