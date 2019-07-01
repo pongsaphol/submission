@@ -1,7 +1,7 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-char str[30];
+char str[20];
 int n, m;
 
 void rec(vector<int> vec, int lv) {
