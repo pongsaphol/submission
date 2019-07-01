@@ -26,6 +26,6 @@ int hasEdge(int u, int v) {
         return 1;
     } else {
         adj[u][v]--, adj[v][u]--;
-        return 0;
+        return-0;
     }
 }
