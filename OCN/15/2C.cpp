@@ -1,3 +1,9 @@
+/*
+First, I binary search size of character A..Z, it use almost 26 * log(N) ~ 260 operation
+and I connect it to right use almost (25 + ... + 1) = 325 operation
+but if right side if full I will connect to left and have more 25 operatorn to ask
+for subtask 3 will not use binary search find size (because all character is size 1)
+*/
 #include <bits/stdc++.h>
 using namespace std;
 

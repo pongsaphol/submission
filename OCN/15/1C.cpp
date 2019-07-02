@@ -1,3 +1,15 @@
+/*
+K bound is log3(N)
+it mean in any level I will divide in 3 group, for each group size not greater than 3^k
+for group "YES", "MAYBE", "NO" 
+let N is size on this level
+and lv is N/3 (size of next level)
+for i in [0, 2*lv) 
+if index is even I will group it "YES" and add i to asking
+if index is odd I will group it "MAYBE" and add i-1 to asking
+for [2*lv, N) I will group it "NO"
+if grader return name of any group I will recursive that group
+*/
 #include <bits/stdc++.h>
 using namespace std;
 
