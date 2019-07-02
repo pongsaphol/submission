@@ -1,3 +1,7 @@
+/*
+    Model to tree structure
+    find max dep of subtree that max{A(L), ..., A(R-1)} < R and track it
+*/
 #include <bits/stdc++.h>
 #define pii pair<int, int>
 #define x first
