@@ -1,6 +1,6 @@
 /*
     dp component problem
-    have 4 operation
+    have 4 method
         1. create component dp(i, j) <- dp(i-1, j-1) * (j - (i > s) - (i > t))
         2. merge left dp(i, j) <- dp(i-1, j) * (j - (i > t))
         3. merge right dp(i, j) <- dp(i-1, j) * (j - (i > s))
