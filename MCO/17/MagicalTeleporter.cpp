@@ -1,3 +1,20 @@
+/*
+    dp component problem
+    have 4 operation
+        1. create component dp(i, j) <- dp(i-1, j-1) * (j - (i > s) - (i > t))
+        2. merge left dp(i, j) <- dp(i-1, j) * (j - (i > t))
+        3. merge right dp(i, j) <- dp(i-1, j) * (j - (i > s))
+        4. merge 2 component dp(i, j) <- dp(i-1, j+1) * j
+    in case not start and end
+        case L use 3, 4
+        case R use 1, 2
+        case B use 1, 2, 3, 4
+    in case start
+        case L, B use dp(i, j) <- dp(i-1, j)
+        case R, B use dp(i, j) <- dp(i-1, j-1)
+    in case end
+        dp(i, j) <- dp(i-1, j) + dp(i-1, j-1)
+*/
 #include <bits/stdc++.h>
 #define long long long
 using namespace std;
