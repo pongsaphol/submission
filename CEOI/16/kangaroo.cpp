@@ -1,3 +1,13 @@
+/*
+    new topic -> DP component 
+    http://codeforces.com/blog/entry/47764
+    
+    dp(i, j) <- consider 1...i and have j component
+    if i == s or i == t:
+        dp(i, j) = dp(i-1, j-1) + dp(i-1, j)
+    else:
+        dp(i, j) = dp(i-1, j+1) * j + dp(i-1, j-1) * (j - (i > s) - (i > t)) 
+*/
 #include <bits/stdc++.h>
 #define long long long
 using namespace std;
