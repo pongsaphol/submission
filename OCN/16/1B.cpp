@@ -1,3 +1,11 @@
+/*
+We ask a series of number until two bips are detected, during which we can immediately know what the number 
+we are looking for is, then we spend the remaining ask quotas to repeatedly press that number until N bips are heard.
+The series of questions are as follows.
+Ask [1..n/2], then [n/2..1], then [n/2+1..n], then [n..n/2+1]. We observe that there is a 1-to-1 mapping between the
+interval of the two bips and the number pressed, and the interval of the two bips is less than N.
+*/
+
 #include <bits/stdc++.h>
 using namespace std;
 
