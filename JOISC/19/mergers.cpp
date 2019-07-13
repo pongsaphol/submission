@@ -1,3 +1,9 @@
+/*
+Our solution is as follows. For each color c, we merge nodes that are in the path from two nodes ui and uj which are
+of that color. This can be done using a DSU, and merging just the nodes in the path from u_i to u_i+1. Note that after 
+we complete the merging process for all colors, we obtain a simplified version of the problem: that each node in the merged tree
+represents one color. This is solved easily: ceil((# of leaves + 1)/2).
+*/
 #include <bits/stdc++.h>
 #define pii pair<int, int>
 #define x first
