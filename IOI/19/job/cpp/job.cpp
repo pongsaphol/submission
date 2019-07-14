@@ -70,10 +70,8 @@ priority_queue<pii, vector<pii>, greater<pii> > Q[N];
 long ans, sumd;
 
 void dfs(int u) {
-	for(int v : g[u]) {
-		dfs(v);
-		Q[u].emplace(vec[v]);
-	}
+	for(int v : g[u]) 
+		dfs(v), Q[u].emplace(vec[v]);
 	while(!Q[u].empty()) {
 		if(Q[u].top() < vec[u]) {
 			vec[u] = vec[u] + Q[u].top();
