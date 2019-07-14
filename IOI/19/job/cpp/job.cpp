@@ -94,10 +94,8 @@ long scheduling_cost(vector<int> p, vector<int> u, vector<int> d) {
 	for(int i = 0; i < p.size(); ++i) vec[i].id = i;
 	priority_queue<pii, vector<pii>, greater<pii> > Q;
 	Q.emplace(vec[0]);
-	vector<int> rr;
 	while(!Q.empty()) {
 		int id = Q.top().id; Q.pop();
-		if(id) rr.emplace_back(id);
 		ans += (sumd += d[id]) * u[id];
 		for(int v : g[id]) Q.emplace(vec[v]);
 	}
