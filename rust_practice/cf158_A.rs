@@ -9,8 +9,8 @@ fn main() {
   s = String::new();
   io::stdin().read_line(&mut s).unwrap();
   let arr = s.split_whitespace().map(|a| a.parse::<i32>().unwrap());
-  let mut c = 1;
-  let mut sol = 0;
+  let mut c : i32 = 1;
+  let mut sol : i32 = 0;
 
   for (i, x) in arr.enumerate() {
     if x > 0 && i < k {
