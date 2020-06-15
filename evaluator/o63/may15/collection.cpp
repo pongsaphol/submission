@@ -1,22 +1,19 @@
 #include <bits/stdc++.h>
-#define long long long
-#define iii tuple<long, int, int>
+#define iii tuple<int, int, int>
 using namespace std;
 
 const int logN = 17;
 const int N = 1 << logN;
 
 int n, m;
-vector<int> g[N];
-int d[logN + 1][N];
-long val[N], t[logN + 1][N << 1], lz[logN + 1][N << 1]; 
+int d[logN + 1][N], tick[logN + 1][N];
+int val[N];
+int t[logN + 1][N << 1], lz[logN + 1][N << 1]; 
 int centroidLV[N], centroidPar[N], centroidFrom[N];
-int tick[logN + 1][N];
-bool check[N];
 int nid[logN+1], id[logN + 1][N];
+bool check[N];
+vector<int> g[N];
 priority_queue<iii> priorCentroid[N];
-
-// segment tree part
 
 void pushLazySegment(int lv, int p, int l, int r) {
   if (lz[lv][p]) {
@@ -44,27 +41,25 @@ void travelSegment(int lv, int x, int y, const T &f, int p = 1, int l = 1, int r
   t[lv][p] = max(t[lv][p << 1], t[lv][p << 1 | 1]);
 }
 
-void updateSegment(int lv, int x, int y, long v) {
+void updateSegment(int lv, int x, int y, int v) {
   travelSegment(lv, x, y, [&](int p) {
     lz[lv][p] += v;
   });
 }
 
-void updateSegmentEqual(int x, long v) {
+void updateSegmentEqual(int x, int v) {
   travelSegment(0, x, x, [&](int p) {
     t[0][p] = v;
   });
 }
 
-long querySegment(int lv, int x, int y) {
-  long mx = -1e18;
+int querySegment(int lv, int x, int y) {
+  int mx = -2e9;
   travelSegment(lv, x, y, [&](int p) {
     mx = max(mx, t[lv][p]);
   });
   return mx;
 }
-
-// HLD part
 
 void dfsFill(int u, int p, int lv) {
   id[lv][u] = ++nid[lv];
@@ -78,7 +73,7 @@ void dfsFill(int u, int p, int lv) {
   }
 }
 
-long getMaxCentroid(int lv, int u) {
+int getMaxCentroid(int lv, int u) {
   while (!priorCentroid[u].empty() && tick[lv][get<1>(priorCentroid[u].top())] != get<2>(priorCentroid[u].top())) {
     priorCentroid[u].pop();
   }
@@ -91,9 +86,9 @@ long getMaxCentroid(int lv, int u) {
   }
   if (priorCentroid[u].empty()) {
     priorCentroid[u].emplace(tmp);
-    return max(0ll, get<0>(tmp)) + val[u];
+    return max(0, get<0>(tmp)) + val[u];
   }
-  long ans = max(0ll, get<0>(tmp)) + max(0ll, get<0>(priorCentroid[u].top())) + val[u];
+  int ans = max(0, get<0>(tmp)) + max(0, get<0>(priorCentroid[u].top())) + val[u];
   priorCentroid[u].emplace(tmp);
   return ans;
 }
@@ -101,13 +96,11 @@ long getMaxCentroid(int lv, int u) {
 void generateSegment(int u, int lv) {
   dfsFill(u, -1, lv);
   for (int v : g[u]) if (!check[v]) {
-    long mx = querySegment(lv, id[lv][v], id[lv][v] + d[lv][v] - 1);
+    int mx = querySegment(lv, id[lv][v], id[lv][v] + d[lv][v] - 1);
     priorCentroid[u].emplace(mx, v, 0);
   }
   updateSegment(0, u, u, getMaxCentroid(lv, u));
 }
-
-// centroid part
 
 void findCentroid(int lv, int u, int p, int sz, int &centroid) {
   int mx = 0;
@@ -140,8 +133,8 @@ void centroidDecomposition(int u, int p = -1, int sz = n, int lv = 1) {
   }
 }
 
-void updateCentroid(int u, long v, int tt) {
-  long diff = v - val[u];
+void updateCentroid(int u, int v, int tt) {
+  int diff = v - val[u];
   val[u] += diff;
   int centroid = u, from = u;
   for (int lv = centroidLV[u]; lv; --lv) {
@@ -162,18 +155,18 @@ void updateCentroid(int u, long v, int tt) {
 int main() {
   scanf("%d %d", &n, &m);
   for (int i = 1; i <= n; ++i) {
-    scanf("%lld", val+i);
+    scanf("%d", val+i);
   }
   for (int i = 1, u, v; i < n; ++i) {
     scanf("%d %d", &u, &v);
     g[u].emplace_back(v), g[v].emplace_back(u);
   }
   centroidDecomposition(1);
-  printf("%lld\n", t[0][1]);
+  printf("%d\n", t[0][1]);
   for (int i = 1, u; i <= m; ++i) {
-    long v;
-    scanf("%d %lld", &u, &v); 
+    int v;
+    scanf("%d %d", &u, &v); 
     updateCentroid(u, v, i);
-    printf("%lld\n", t[0][1]);
+    printf("%d\n", t[0][1]);
   }
 }
